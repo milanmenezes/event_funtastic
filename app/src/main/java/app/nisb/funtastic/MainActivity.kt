@@ -9,8 +9,15 @@ import android.widget.Toast
 import org.json.JSONException
 import android.content.Intent
 import android.content.Context
+import android.util.Log
 import org.jetbrains.anko.longToast
 import org.jetbrains.anko.toast
+import com.android.volley.*
+import com.android.volley.Response.*
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+
+
 
 
 
@@ -22,6 +29,7 @@ var code = arrayListOf<String>("a9b7ba70783b617e9998dc4dd82eb3c5",
     "2387337ba1e0b0249ba90f55b2ba2521",
     "5f268dfb0fbef44de0f668a022707b86")
 var curr = 0
+var cur1= 0
 
 
 
@@ -110,7 +118,7 @@ class MainActivity : AppCompatActivity() {
             code = arrayListOf<String>("a9b7ba70783b617e9998dc4dd82eb3c5",
                     "d0fb963ff976f9c37fc81fe03c21ea7b",
                     "4ba29b9f9e5732ed33761840f4ba6c53",
-                    "a591024321c5e2bdbd23ed35f0574dde",
+                    "2387337ba1e0b0249ba90f55b2ba2521",
                     "b8b4b727d6f5d1b61fff7be687f7970f",
                     "d47268e9db2e9aa3827bba3afb7ff94a",
                     "5f268dfb0fbef44de0f668a022707b86")
@@ -129,7 +137,7 @@ class MainActivity : AppCompatActivity() {
 
             code = arrayListOf<String>("a9b7ba70783b617e9998dc4dd82eb3c5",
                     "908c9a564a86426585b29f5335b619bc",
-                    "d806ca13ca3449af72a1ea5aedbed26a",
+                    "2387337ba1e0b0249ba90f55b2ba2521",
                     "a4380923dd651c195b1631af7c829187",
                     "20479c788fb27378c2c99eadcf207e7f",
                     "3a61ed715ee66c48bacf237fa7bb5289",
@@ -172,13 +180,34 @@ class MainActivity : AppCompatActivity() {
 
                     if (num==code[curr]){
 
-                        if (curr<6)
+                        if (curr<6){
                         curr+=1
+                        }
+
+                        if (cur1<7)
+                            cur1+=1
 
                         val sharedpreferences = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE)
                         val editor = sharedpreferences.edit()
                         editor.putString("current", curr.toString())
                         editor.commit()
+
+                        var teamno = sharedpreferences.getString("teamno","1").toInt()
+                        val queue:RequestQueue = Volley.newRequestQueue(this)
+                        val url:String = "http://funtastic.ml/827ccb0eea8a706c4c34a16891f84e7b/"+teamno+"/"+ cur1
+
+
+                        // Request a string response from the provided URL.
+                        val stringRequest = StringRequest(Request.Method.GET, url,
+                                Listener<String>{ response ->
+                                    // Display the first 500 characters of the response string.
+                                    Log.d("volley: ",response.toString())
+                                }, ErrorListener {
+                            Log.d("volley:","That didn't work!")
+                        })
+
+                        // Add the request to the RequestQueue.
+                        queue.add(stringRequest)
 
 
                         if (num==code[0])
