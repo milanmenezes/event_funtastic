@@ -15,93 +15,154 @@ import android.content.Intent
 import android.R.id.edit
 import android.app.PendingIntent.getActivity
 import android.content.Context
+import org.jetbrains.anko.intentFor
 import android.content.SharedPreferences
 import android.content.Context.MODE_PRIVATE
 import android.R.id.edit
 import android.content.SharedPreferences.Editor
 import org.jetbrains.anko.longToast
 import org.jetbrains.anko.toast
+import kotlin.concurrent.thread
+import android.graphics.Bitmap
+import java.util.*
 
 
-
-//val codes: IntArray = intArrayOf(10, 20, 30, 40, 50, 60, 70)
-val code = arrayListOf<String>("a9b7ba70783b617e9998dc4dd82eb3c5","b8c37e33defde51cf91e1e03e51657da","fba9d88164f3e2d9109ee770223212a0","aa68c75c4a77c87f97fb686b2f068676","fed33392d3a48aa149a87a38b875ba4a","2387337ba1e0b0249ba90f55b2ba2521","9246444d94f081e3549803b928260f56")
+var code = arrayListOf<String>("a9b7ba70783b617e9998dc4dd82eb3c5","b8c37e33defde51cf91e1e03e51657da","fba9d88164f3e2d9109ee770223212a0","aa68c75c4a77c87f97fb686b2f068676","fed33392d3a48aa149a87a38b875ba4a","2387337ba1e0b0249ba90f55b2ba2521","9246444d94f081e3549803b928260f56")
 var curr = 0
 
 
 
 class MainActivity : AppCompatActivity() {
 
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        q1.visibility = View.GONE
-        q2.visibility = View.GONE
-        q3.visibility = View.GONE
-        q4.visibility = View.GONE
-        q5.visibility = View.GONE
-        q6.visibility = View.GONE
-        q7.visibility = View.GONE
-
-
         val sharedpreferences = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE)
 
-        curr = sharedpreferences.getString("current","0").toInt()
+        var teamno = sharedpreferences.getString("teamno","1").toInt()
 
-        val test = curr
+        teamno--
 
-        if (test>=1){
-            q1.visibility = View.VISIBLE
+        var group = teamno%3
+
+
+            q1.visibility = View.GONE
+            q2.visibility = View.GONE
+            q3.visibility = View.GONE
+            q4.visibility = View.GONE
+            q5.visibility = View.GONE
+            q6.visibility = View.GONE
+            q7.visibility = View.GONE
+
+
+
+
+            curr = sharedpreferences.getString("current", "0").toInt()
+
+            val test = curr
+
+            if (test >= 1) {
+                q1.visibility = View.VISIBLE
+            }
+
+            if (test >= 2) {
+                q2.visibility = View.VISIBLE
+            }
+
+            if (test >= 3) {
+                q3.visibility = View.VISIBLE
+            }
+
+            if (test >= 4) {
+                q4.visibility = View.VISIBLE
+            }
+
+            if (test >= 5) {
+                q5.visibility = View.VISIBLE
+            }
+
+            if (test >= 6) {
+                q6.visibility = View.VISIBLE
+            }
+
+            if (test >= 7) {
+                q7.visibility = View.VISIBLE
+                longToast("Congratulations!!")
+            }
+
+        toast((group+1).toString())
+
+        if (group==0) {
+
+            code = arrayListOf<String>("a9b7ba70783b617e9998dc4dd82eb3c5",
+                    "b8c37e33defde51cf91e1e03e51657da",
+                    "fba9d88164f3e2d9109ee770223212a0",
+                    "aa68c75c4a77c87f97fb686b2f068676",
+                    "fed33392d3a48aa149a87a38b875ba4a",
+                    "2387337ba1e0b0249ba90f55b2ba2521",
+                    "5f268dfb0fbef44de0f668a022707b86")
+
+                q0.text = "1) Start from Notice Board!"
+                q1.text = "2) Keeping food cold is important you see,\n This is the place where the meal may be."
+                q2.text = "3) I an the source of knowledge, found in every knowledge. Even though i vanished,\n but present in your college."
+                q3.text = "4) When light goes, E=PZΦn/A come to rescue."
+                q4.text = "5) Some like me hot, some like me cold,\n some like me mild but some like me bold."
+                q5.text = "6) My birthday is (celebrated as) your day.\n You drink water because of me. Find me in college."
+                q6.text = "7) The wheel is come full circle,\n the end of the journey is the beginning of our run."
+                q7.text = "Congratulations!!\n You have Completed the Treasure Hunt!!"
+            }
+
+        if (group==1) {
+
+            code = arrayListOf<String>("a9b7ba70783b617e9998dc4dd82eb3c5",
+                    "d0fb963ff976f9c37fc81fe03c21ea7b",
+                    "4ba29b9f9e5732ed33761840f4ba6c53",
+                    "a591024321c5e2bdbd23ed35f0574dde",
+                    "b8b4b727d6f5d1b61fff7be687f7970f",
+                    "d47268e9db2e9aa3827bba3afb7ff94a",
+                    "5f268dfb0fbef44de0f668a022707b86")
+
+            q0.text = "1) Start from Notice Board!"
+            q1.text = "2) You pass through me everyday with all the respect,\n Remainds your identity when he is there for inspect."
+            q2.text = "3) I love my girls, you are so sweet,\n This comfy place is where princesses sleep."
+            q3.text = "4) My birthday is (celebrated as)your day.\n You drink water because of me. Find me in college."
+            q4.text = "5) To solve the hunt , you must get into the room wired with net, crambed with tech and full of code with the clue hidden in this building."
+            q5.text = "6) KA 09 ___________ \nI'm the third son in the family.Me, my twin, an elder brother who is twice my age and sister a year younger are standing in an order of birth. sum of our age is 19. find the blank."
+            q6.text = "7) The wheel is come full circle, the end of the journey is the beginning of our run."
+            q7.text = "Congratulations!!\n You have Completed the Treasure Hunt!!"
         }
 
-        if(test>=2){
-            q2.visibility = View.VISIBLE
-        }
+        if (group==2) {
 
-        if(test>=3){
-            q3.visibility = View.VISIBLE
-        }
+            code = arrayListOf<String>("a9b7ba70783b617e9998dc4dd82eb3c5",
+                    "908c9a564a86426585b29f5335b619bc",
+                    "d806ca13ca3449af72a1ea5aedbed26a",
+                    "a4380923dd651c195b1631af7c829187",
+                    "20479c788fb27378c2c99eadcf207e7f",
+                    "3a61ed715ee66c48bacf237fa7bb5289",
+                    "5f268dfb0fbef44de0f668a022707b86")
 
-        if(test>=4){
-            q4.visibility = View.VISIBLE
-        }
-
-        if(test>=5){
-            q5.visibility = View.VISIBLE
-        }
-
-        if(test>=6){
-            q6.visibility = View.VISIBLE
-        }
-
-        if(test>=7){
-            q7.visibility = View.VISIBLE
-            longToast("Congradulations!!")
+            q0.text = "1) Start from Notice Board!"
+            q1.text = "2) You pass through me everyday with all the respect, Remainds your identity when he is there for inspect."
+            q2.text = "3) My birthday is (celebrated as) your day. You drink water because of me. Find me in college."
+            q3.text = "4) Causion is needed going this way, A tarmac place of bay bay bay. Now is the time to leave the car, If you leave here you'll not go far."
+            q4.text = "5) I have a pouch but i cant catch fish. I see shots fired and all your colour full sneakers. Find me you seeker."
+            q5.text = "6) You gulp it down or sip it slow, this is the place where you forget to frown."
+            q6.text = "7) The wheel is come full circle, the end of the journey is the beginning of our run."
+            q7.text = "Congratulations!!\n You have Completed the Treasure Hunt!!"
         }
 
 
-        q0.text = "1) Start from the Notice Board!"
-        q1.text = "2) You pass through me everyday with all the respect,\n Remainds your identity when he is there for inspect"
-        q2.text = "3) I love my girls, you are so sweet,\n This comfy place is where princesses sleep"
-        q3.text = "4) My birthday is (celebrated as)your day.\n You drink water because of me. Find me in college"
-        q4.text = "5) To solve the hunt , you must get into the room wired with net, crambed with tech and full of code with the clue hidden in this building"
-        q5.text = "6) KA 09 ___________ \nIm the third son in the family.Me, my twin, an elder brother who is twice my age and sister a year younger are standing in an order of birth. sum of our age is 19. find the blank."
-        q6.text = "7) Seventh question text"
-        q7.text = "Congradulations!!\n You have Completed the Treasure Hunt!!"
+
+            var qrScan: IntentIntegrator = IntentIntegrator(this)
+
+            qrbtn.setOnClickListener({
+                qrScan.initiateScan()
+            })
 
 
-        var qrScan : IntentIntegrator = IntentIntegrator(this)
-
-        qrbtn.setOnClickListener({
-            qrScan.initiateScan()
-        })
 
     }
-
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
@@ -117,6 +178,8 @@ class MainActivity : AppCompatActivity() {
                     val num = (result.contents).toString()
 
                     if (num==code[curr]){
+
+                        if (curr<6)
                         curr+=1
 
                         val sharedpreferences = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE)
@@ -125,27 +188,27 @@ class MainActivity : AppCompatActivity() {
                         editor.commit()
 
 
-                        if (num=="a9b7ba70783b617e9998dc4dd82eb3c5")
+                        if (num==code[0])
                             q1.visibility = View.VISIBLE
 
-                        if (num=="b8c37e33defde51cf91e1e03e51657da")
+                        if (num==code[1])
                             q2.visibility = View.VISIBLE
 
-                        if (num=="fba9d88164f3e2d9109ee770223212a0")
+                        if (num==code[2])
                             q3.visibility = View.VISIBLE
 
-                        if (num=="aa68c75c4a77c87f97fb686b2f068676")
+                        if (num==code[3])
                             q4.visibility = View.VISIBLE
 
-                        if (num=="fed33392d3a48aa149a87a38b875ba4a")
+                        if (num==code[4])
                             q5.visibility = View.VISIBLE
 
-                        if (num=="2387337ba1e0b0249ba90f55b2ba2521")
+                        if (num==code[5])
                             q6.visibility = View.VISIBLE
 
-                        if (num=="9246444d94f081e3549803b928260f56") {
+                        if (num==code[6]) {
                             q7.visibility = View.VISIBLE
-                            longToast("Congradulations!!")
+                            longToast("Congratulations!!")
                         }
 
                     }
