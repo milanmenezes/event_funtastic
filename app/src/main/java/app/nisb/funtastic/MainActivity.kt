@@ -3,31 +3,24 @@ package app.nisb.funtastic
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-
 import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
-
 import kotlinx.android.synthetic.main.activity_main.*
 import android.widget.Toast
 import org.json.JSONException
-import org.json.JSONObject
 import android.content.Intent
-import android.R.id.edit
-import android.app.PendingIntent.getActivity
 import android.content.Context
-import org.jetbrains.anko.intentFor
-import android.content.SharedPreferences
-import android.content.Context.MODE_PRIVATE
-import android.R.id.edit
-import android.content.SharedPreferences.Editor
 import org.jetbrains.anko.longToast
 import org.jetbrains.anko.toast
-import kotlin.concurrent.thread
-import android.graphics.Bitmap
-import java.util.*
 
 
-var code = arrayListOf<String>("a9b7ba70783b617e9998dc4dd82eb3c5","b8c37e33defde51cf91e1e03e51657da","fba9d88164f3e2d9109ee770223212a0","aa68c75c4a77c87f97fb686b2f068676","fed33392d3a48aa149a87a38b875ba4a","2387337ba1e0b0249ba90f55b2ba2521","9246444d94f081e3549803b928260f56")
+
+var code = arrayListOf<String>("a9b7ba70783b617e9998dc4dd82eb3c5",
+    "b8c37e33defde51cf91e1e03e51657da",
+    "fba9d88164f3e2d9109ee770223212a0",
+    "aa68c75c4a77c87f97fb686b2f068676",
+    "fed33392d3a48aa149a87a38b875ba4a",
+    "2387337ba1e0b0249ba90f55b2ba2521",
+    "5f268dfb0fbef44de0f668a022707b86")
 var curr = 0
 
 
