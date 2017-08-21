@@ -105,7 +105,7 @@ class MainActivity : AppCompatActivity() {
 
                 q0.text = "1) Start from Notice Board!"
                 q1.text = "2) Keeping food cold is important you see,\n This is the place where the meal may be."
-                q2.text = "3) I an the source of knowledge, found in every knowledge. Even though i vanished,\n but present in your college."
+                q2.text = "3) I am the source of knowledge, found in every knowledge. Even though I vanished,\n but present in your college."
                 q3.text = "4) When light goes, E=PZΦn/A come to rescue."
                 q4.text = "5) Some like me hot, some like me cold,\n some like me mild but some like me bold."
                 q5.text = "6) My birthday is (celebrated as) your day.\n You drink water because of me. Find me in college."
@@ -124,11 +124,11 @@ class MainActivity : AppCompatActivity() {
                     "5f268dfb0fbef44de0f668a022707b86")
 
             q0.text = "1) Start from Notice Board!"
-            q1.text = "2) You pass through me everyday with all the respect,\n Remainds your identity when he is there for inspect."
+            q1.text = "2) Its a place of DJ where you go to\n Dance and play, wanna go out take a U-Turn."
             q2.text = "3) I love my girls, you are so sweet,\n This comfy place is where princesses sleep."
-            q3.text = "4) My birthday is (celebrated as)your day.\n You drink water because of me. Find me in college."
+            q3.text = "4) My birthday is (celebrated as) your day.\n You drink water because of me. Find me in college."
             q4.text = "5) To solve the hunt , you must get into the room wired with net, crambed with tech and full of code with the clue hidden in this building."
-            q5.text = "6) KA 09 ___________ \nI'm the third son in the family.Me, my twin, an elder brother who is twice my age and sister a year younger are standing in an order of birth. sum of our age is 19. find the blank."
+            q5.text = "6) KA 09 ___________ \nI'm the third son in the family.Me, my twin, an elder brother who is twice my age and sister a year younger are standing in an order of birth. sum of our age is 19. Find the blank."
             q6.text = "7) The wheel is come full circle, the end of the journey is the beginning of our run."
             q7.text = "Congratulations!!\n You have Completed the Treasure Hunt!!"
         }
@@ -144,9 +144,9 @@ class MainActivity : AppCompatActivity() {
                     "5f268dfb0fbef44de0f668a022707b86")
 
             q0.text = "1) Start from Notice Board!"
-            q1.text = "2) You pass through me everyday with all the respect, Remainds your identity when he is there for inspect."
+            q1.text = "2) You pass through me everyday with all the respect, Reminds your identity when he is there for inspect."
             q2.text = "3) My birthday is (celebrated as) your day. You drink water because of me. Find me in college."
-            q3.text = "4) Causion is needed going this way, A tarmac place of bay bay bay. Now is the time to leave the car, If you leave here you'll not go far."
+            q3.text = "4) Caution is needed going this way, A tarmac place of bay bay bay. Now is the time to leave the car, If you leave here you'll not go far."
             q4.text = "5) I have a pouch but i cant catch fish. I see shots fired and all your colour full sneakers. Find me you seeker."
             q5.text = "6) You gulp it down or sip it slow, this is the place where you forget to frown."
             q6.text = "7) The wheel is come full circle, the end of the journey is the beginning of our run."
